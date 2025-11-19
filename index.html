@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectrum English - Online Courses & E-books</title>
+    <!-- Tailwind CSS is loaded for rapid, responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* 1. Global Styles & Variables */
+        :root {
+            --primary-color: #007bff; /* Spectrum Blue */
+            --accent-color: #25d366; /* WhatsApp Green */
+            --dark-bg: #1f2937; /* Tailwind Gray-800 for dark backgrounds */
+            --card-bg: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+            color: #1f2937;
+            padding-top: 56px; /* Space for fixed header */
+            scroll-behavior: smooth;
+        }
+
+        /* 2. Custom CSS for Animation and Overrides */
+
+        /* Header Styling */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: var(--dark-bg);
+            color: white;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .logo h1 {
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+
+        /* Mobile Navigation (Hidden by default) */
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 100%; /* Below the header */
+            left: 0;
+            width: 100%;
+            background-color: var(--dark-bg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            /* Smooth Transition for Menu Toggle */
+            transition: transform 0.3s ease-in-out;
+            transform: translateY(-100vh); /* Start off-screen */
+        }
+
+        .nav-links.active {
+            display: flex;
+            transform: translateY(0); /* Slide in */
+        }
+
+        .nav-links a {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: #374151; /* Darker gray on hover */
+        }
+
+        .nav-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Hero Section - UPDATED WITH BACKGROUND IMAGE */
+        .hero-section {
+            /* Use a dark-to-blue gradient overlay over a placeholder image of books for clarity */
+            background-image: linear-gradient(rgba(0, 123, 255, 0.8) 0%, rgba(0, 198, 255, 0.7) 100%), 
+                              url('https://placehold.co/1200x600/333333/ffffff?text=STUDY+LIBRARY+OF+BOOKS');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .btn:active {
+            transform: scale(0.98); /* Press down effect */
+        }
+
+        .btn-primary {
+            background-color: #fff;
+            color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.5);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: white;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);
+        }
+        
+        /* Secondary Button Style (for free items/back buttons) */
+        .btn-secondary {
+            background-color: #e5e7eb;
+            color: #1f2937;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn-secondary:hover {
+            background-color: #d1d5db;
+        }
+
+        /* Category Filters (Horizontal Scroll) */
+        .categories-nav {
+            background-color: white;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 0.75rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
+        }
+
+        .categories-nav ul {
+            display: flex;
+            padding: 0 1rem;
+        }
+
+        .categories-nav li {
+            list-style: none;
+            margin-right: 0.75rem;
+        }
+
+        .category-filter {
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px; /* Fully rounded pill shape */
+            text-decoration: none;
+            font-size: 0.875rem;
+            color: #4b5563;
+            background-color: #e5e7eb;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .category-filter.active, .category-filter:hover {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Item Grid & Cards (Applied to both courses and ebooks) */
+        .item-grid {
+            display: grid;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        .item-card {
+            background-color: var(--card-bg);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            /* Animation setup */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s;
+        }
+
+        .item-card:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+            transform: translateY(0px) scale(1.02);
+        }
+
+        .item-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .item-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1rem;
+        }
+
+        /* Paid Group Promo Banner */
+        .paid-group-promo {
+            text-align: center;
+            margin: 1.5rem 1rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Footer */
+        .main-footer {
+            background-color: var(--dark-bg);
+            color: #9ca3af;
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .contact-icons, .social-join-icons {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icons a, .social-join-icons a {
+            color: #e5e7eb;
+            font-size: 1.5rem;
+            margin: 0 0.75rem;
+            transition: color 0.3s;
+        }
+
+        .contact-icons a:hover, .social-join-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-heading {
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.75rem;
+        }
+        
+        /* Media Query for Desktop (Optional, but good practice) */
+        @media (min-width: 768px) {
+            .item-grid {
+                grid-template-columns: repeat(2, 1fr); /* Two columns for tablet */
+            }
+            @media (min-width: 1024px) {
+                .item-grid {
+                    grid-template-columns: repeat(3, 1fr); /* Three columns for desktop */
+                }
+            }
+            .main-header {
+                padding: 0.75rem 2rem;
+            }
+            .nav-links {
+                position: static;
+                flex-direction: row;
+                display: flex;
+                transform: none;
+                width: auto;
+                background-color: transparent;
+                border-top: none;
+            }
+            .nav-links a {
+                padding: 0.5rem 1rem;
+                border-bottom: none;
+            }
+            .nav-toggle {
+                display: none;
+            }
+            body {
+                padding-top: 64px;
+            }
+        }
+
+        /* Custom Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Styling for the Detail View (Initially hidden) */
+        .page-content {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+            padding: 0; /* Remove padding here, add to inner divs */
+        }
+
+        .page-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. HEADER & NAVIGATION (Sticky on Mobile) -->
+    <header class="main-header">
+        <div class="logo">
+            <h1>Spectrum English</h1>
+        </div>
+        
+        <!-- Mobile Navigation Menu (Hamburger Icon/Off-canvas) -->
+        <nav class="mobile-nav">
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="courses">Courses</a></li>
+                <li><a href="#" class="nav-link" data-page="ebooks">E-books</a></li> <!-- New Link -->
+                <li><a href="#" class="nav-link" data-page="group">Join Paid Group</a></li>
+                <li><a href="#" class="nav-link" data-page="contact">Contact Us</a></li>
+                <li><a href="#" class="nav-link" data-page="policies">Policies</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="app-container">
+        
+        <!-- ============================================== -->
+        <!-- 2. HOME PAGE CONTENT (Default View - Courses) -->
+        <!-- ============================================== -->
+        <div id="home-page" class="page-content active">
+
+            <!-- 2.1 HERO SECTION -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Master English for Success</h2>
+                    <p class="text-lg md:text-xl mb-6 opacity-90">Learn Vocabulary, Grammar, and CSS Prep from the experts.</p>
+                    <!-- Primary CTA - leads directly to the course list below -->
+                    <a href="#courses-listing" class="btn btn-primary smooth-scroll">Browse All Courses <i class="fas fa-arrow-down ml-2"></i></a>
+                </div>
+            </section>
+
+            <!-- 2.2 CATEGORY FILTERS (Horizontal Scrollable) -->
+            <nav class="categories-nav">
+                <ul id="course-categories-list">
+                    <li><a href="#" class="category-filter active" data-filter="all" data-type="course">All Courses</a></li>
+                    <li><a href="#" class="category-filter" data-filter="paid" data-type="course">Paid (8)</a></li>
+                    <li><a href="#" class="category-filter" data-filter="free" data-type="course">Free (2)</a></li>
+                    <li><a href="#" class="category-filter" data-filter="spoken" data-type="course">Spoken English</a></li>
+                    <li><a href="#" class="category-filter" data-filter="grammar" data-type="course">Grammar</a></li>
+                    <li><a href="#" class="category-filter" data-filter="notes" data-type="course">Notes/CSS Prep</a></li>
+                </ul>
+            </nav>
+
+            <!-- 2.3 COURSE LISTING SECTION -->
+            <section id="courses-listing" class="items-section">
+                <h2 class="section-title text-2xl font-bold p-4 text-center">Our Top Courses (10 Total)</h2>
+                <div class="item-grid" id="course-grid">
+                    
+                    <!-- 1. PAID: English Grammar Masterclass (Existing) -->
+                    <article class="item-card course-card" data-category="grammar paid" data-delay="0" data-course-id="grammar-master" data-item-type="course">
+                        <img src="https://placehold.co/600x400/007bff/ffffff?text=Grammar+Masterclass" alt="English Grammar Course" class="rounded-t-lg">
+                        <div class="card-content">
+                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full mb-2 inline-block font-semibold">PAID</span>
+                            <h3 class="text-xl font-bold">English Grammar Masterclass</h3>
+                            <p class="text-gray-600 mb-3">Complete tenses, parts of speech, and sentence structure.</p>
+                            <p class="course-price text-2xl font-extrabold text-blue-700">PKR 2500</p>
+                            <button class="btn btn-primary w-full mt-3 text-sm view-details-btn" data-course-id="grammar-master" data-item-type="course">View Details</button>
+                        </div>
+                    </article>
+
+                    <!-- 2. PAID: Advanced Parts of Speech Workshop (NEW) -->
+                    <article class="item-card course-card" data-category="grammar paid" data-delay="100" data-course-id="parts-of-speech" data-item-type="course">
+                        <img src="https://placehold.co/600x400/ff6b6b/ffffff?text=Parts+of+Speech" alt="Parts of Speech Workshop" class="rounded-t-lg">
+                        <div class="card-content">
+                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full mb-2 inline-block font-semibold">PAID</span>
+                            <h3 class="text-xl font-bold">Advanced Parts of Speech Workshop</h3>
+                            <p class="text-gray-600 mb-3">Intensive focus on complex usage and error correction in Grammar.</p>
+                            <p class="course-price text-2xl font-extrabold text-blue-700">PKR 1800</p>
+                            <button class="btn btn-primary w-full mt-3 text-sm view-details-btn" data-course-id="parts-of-speech" data-item-type="course">View Details</button>
+                        </div>
+                    </article>
+                    
+                    <!-- 3. FREE: Daily Vocabulary Course (Existing) -->
+                    <article class="item-card course-card" data-category="spoken free" data-delay="200" data-course-id="daily-vocab" data-item-type="course">
+                        <img src="https://placehold.co/600x400/25d366/ffffff?text=Vocabulary" alt="Daily English Vocabulary Recorded Lectures" class="rounded-t-lg">
+                        <div class="card-content">
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full mb-2 inline-block font-semibold">FREE</span>
+                            <h3 class="text-xl font-bold">Daily Vocabulary (Recorded)</h3>
+                            <p class="text-gray-600 mb-3">Boost your word bank with daily curated word lists and usage.</p>
+                            <p class="course-price text-2xl font-extrabold text-green-700">FREE</p>
+                            <button class="btn btn-secondary w-full mt-3 text-sm view-details-btn" data-course-id="daily-vocab" data-item-type="course">Start Learning</button>
+                        </div>
+                    </article>
+                    
+                    <!-- 4. PAID: Daily CSS Preparation Notes (Existing) -->
+                    <article class="item-card course-card" data-category="notes paid" data-delay="300" data-course-id="css-notes" data-item-type="course">
+                        <img src="https://placehold.co/600x400/fcd34d/1f2937?text=CSS+Prep" alt="Daily CSS Preparation" class="rounded-t-lg">
+                        <div class="card-content">
+                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full mb-2 inline-block font-semibold">PAID</span>
+                            <h3 class="text-xl font-bold">Daily CSS Preparation Notes</h3>
+                            <p class="text-gray-600 mb-3">Weekly updates on current affairs and essay structure notes.</p>
+                            <p class="course-price text-2xl font-extrabold text-blue-700">PKR 1000/Month</p>
+                            <button class="btn btn-primary w-full mt-3 text-sm view-details-btn" data-course-id="css-notes" data-item-type="course">View Details</button>
+                        </div>
+                    </article>
+                    
+                    <!-- 5. PAID: Academic Essay Writing Techniques (NEW) -->
+                    <article class="item-card course-card" data-category="notes paid" data-delay="400" data-course-id="essay-writing" data-item-type="course">
+                        <img src="https://placehold.co/600x400/54a0ff/ffffff?text=Essay+Writing+Skills" alt="Academic Essay Writing Techniques" class="rounded-t-lg">
+                        <div class="card-content">
+                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full mb-2 inline-block font-semibold">PAID</span>
+                            <h3 class="text-xl font-bold">Academic Essay Writing Techniques</h3>
+                            <p class="text-gray-600 mb-3">Structured approach to writing high-scoring academic essays.</p>
+                            <p class="course-price text-2xl font-extrabold text-blue-700">PKR 2200</p>
+                            <button class="btn btn-primary w-full mt-3 text-sm view-details-btn" data-course-id="essay-writing" data-item-type="course">View Details</button>
+                        </div>
+                    </article>
+
+                    <!-- 6. PAID: Daily Dawn Newspaper Analysis (Existing) -->
+                    <article class="item-card course-card" data-category="notes paid" data-delay="500" data-course-id="dawn-analysis" data-item-type="course">
+                        <img src="https://placehold.co/600x400/9333ea/ffffff?text=Dawn+Analysis" alt="Daily Dawn Newspaper Analysis" class="rounded-t-lg">
+                        <div class="card-content">
+                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full mb-2 inline-block font-semibold">PAID</span>
+                            <h3 class="text-xl font-bold">Daily Dawn Newspaper Analysis</h3>
+                            <p class="text-gray-600 mb-3">In-depth editorial analysis for high-level exam prep.</p>
+                            <p class="course-price text-2xl font-extrabold text-blue-700">PKR 1500/Month</p>
+                            <button class="btn btn-primary w-full mt-3 text-sm view-details-btn" data-course-id="dawn-analysis" data-item-type="course">View Details</button>
+                        </div>
+                    </article>
+                    
+                    <!-- 7. PAID: Spoken English Fluency Intensive (NEW) -->
+                    <article class="item-card course-card" data-category="spoken paid" data-delay="600" data-course-id="fluency-intensive" data-item-type="course">
+                        <img src="https://placehold.co/600x400/ff9f43/1f2937?text=Fluency+Intensive" alt="Spoken English Fluency Intensive" class="rounded-t-lg">
+                        <div class="card-content">
+                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full mb-2 inline-block font-semibold">PAID</span>
+                            <h3 class="text-xl font-bold">Spoken English Fluency Intensive</h3>
+                            <p class="text-gray-600 mb-3">Practical, application-based course to improve speaking confidence.</p>
+                            <p class="course-price text-2xl font-extrabold text-blue-700">PKR 3500</p>
+                            <button class="btn btn-primary w-full mt-3 text-sm view-details-btn" data-course-id="fluency-intensive" data-item-type="course">View Details</button>
+                        </div>
+                    </article>
+
+                    <!-- 8. PAID: Live Advanced Vocabulary Building (NEW) -->
+                    <article class="item-card course-card" data-category="spoken paid" data-delay="700" data-course-id="vocab-live" data-item-type="course">
+                        <img src="https://placehold.co/600x400/1dd1a1/1f2937?text=Advanced+Vocab" alt="Live Advanced Vocabulary Building" class="rounded-t-lg">
+                        <div class="card-content">
+                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full mb-2 inline-block font-semibold">PAID</span>
+                            <h3 class="text-xl font-bold">Live Advanced Vocabulary Building</h3>
+                            <p class="text-gray-600 mb-3">Interactive live sessions for mastering high-frequency words for exams.</p>
+                            <p class="course-price text-2xl font-extrabold text-blue-700">PKR 900/Month</p>
+                            <button class="btn btn-primary w-full mt-3 text-sm view-details-btn" data-course-id="vocab-live" data-item-type="course">View Details</button>
+                        </div>
+                    </article>
+
+                    <!-- 9. PAID: PMS English Comprehensive Prep (NEW) -->
+                    <article class="item-card course-card" data-category="notes paid" data-delay="800" data-course-id="pms-prep" data-item-type="course">
+                        <img src="https://placehold.co/600x400/c738d8/ffffff?text=PMS+Prep" alt="PMS English Comprehensive Prep" class="rounded-t-lg">
+                        <div class="card-content">
+                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full mb-2 inline-block font-semibold">PAID</span>
+                            <h3 class="text-xl font-bold">PMS English Comprehensive Prep</h3>
+                            <p class="text-gray-600 mb-3">Targeted module covering English components for the PMS examination.</p>
+                            <p class="course-price text-2xl font-extrabold text-blue-700">PKR 4000</p>
+                            <button class="btn btn-primary w-full mt-3 text-sm view-details-btn" data-course-id="pms-prep" data-item-type="course">View Details</button>
+                        </div>
+                    </article>
+
+                    <!-- 10. FREE: Basic English Pronunciation Guide (NEW) -->
+                    <article class="item-card course-card" data-category="spoken free" data-delay="900" data-course-id="pronunciation-basics" data-item-type="course">
+                        <img src="https://placehold.co/600x400/ffa8a8/1f2937?text=Pronunciation+Free" alt="Basic English Pronunciation Guide" class="rounded-t-lg">
+                        <div class="card-content">
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full mb-2 inline-block font-semibold">FREE</span>
+                            <h3 class="text-xl font-bold">Basic English Pronunciation Guide</h3>
+                            <p class="text-gray-600 mb-3">Free introductory course to basic sounds and common pronunciation rules.</p>
+                            <p class="course-price text-2xl font-extrabold text-green-700">FREE</p>
+                            <button class="btn btn-secondary w-full mt-3 text-sm view-details-btn" data-course-id="pronunciation-basics" data-item-type="course">Start Learning</button>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- 2.4 PAID GROUP PROMOTION BANNER - Attractive Update -->
+            <section class="
+                paid-group-promo 
+                animate-fade-in 
+                bg-gradient-to-r from-pink-600 to-red-600 
+                text-white 
+                p-6 md:p-10 
+                shadow-2xl 
+                border-4 border-yellow-300 
+                transition-all duration-500 
+                hover:shadow-3xl hover:border-yellow-400
+            " aria-labelledby="group-offer-title">
+                <h2 id="group-offer-title" class="
+                    text-4xl md:text-5xl 
+                    font-black 
+                    mb-2 
+                    uppercase 
+                    tracking-wider
+                    text-yellow-300
+                ">
+                    Limited Time Offer!
+                </h2>
+                <p class="text-xl md:text-2xl mb-4 font-extrabold">
+                    Join our exclusive Paid WhatsApp Group.
+                    <span class="block text-4xl font-black mt-2 text-white bg-red-700/50 p-1 rounded-lg">
+                        ONLY 1000/-PKR Yearly
+                    </span> 
+                    (Offer Ends Dec 1st!)
+                </p>
+                <button class="
+                    btn btn-accent 
+                    shadow-lg hover:shadow-xl 
+                    nav-link 
+                    mt-4 
+                    text-xl 
+                    py-3 px-8
+                " data-page="group">
+                    Secure Your Spot & Join Now <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </section>
+        </div>
+        
+        <!-- ============================================== -->
+        <!-- 3. E-BOOKS PAGE CONTENT (New Dedicated Page) -->
+        <!-- ============================================== -->
+        <div id="ebooks-page" class="page-content bg-gray-50 min-h-screen">
+            <div class="p-4 md:p-8">
+                <h2 class="text-3xl font-bold mb-4 text-gray-800">Premium E-books and Study Guides</h2>
+                <p class="text-lg mb-6 text-gray-600">Downloadable resources for self-study and exam preparation.</p>
+            </div>
+            
+            <!-- EBOOK CATEGORIES -->
+            <nav class="categories-nav">
+                <ul id="ebook-categories-list">
+                    <li><a href="#" class="category-filter active" data-filter="all" data-type="ebook">All E-books</a></li>
+                    <li><a href="#" class="category-filter" data-filter="paid" data-type="ebook">Paid (3)</a></li>
+                    <li><a href="#" class="category-filter" data-filter="free" data-type="ebook">Free (3)</a></li>
+                    <li><a href="#" class="category-filter" data-filter="grammar" data-type="ebook">Grammar</a></li>
+                    <li><a href="#" class="category-filter" data-filter="handwriting" data-type="ebook">Handwriting</a></li>
+                    <li><a href="#" class="category-filter" data-filter="novel" data-type="ebook">Novels/Reading</a></li>
+                </ul>
+            </nav>
+            
+            <!-- EBOOK LISTING -->
+            <section id="ebooks-listing" class="items-section">
+                <div class="item-grid" id="ebook-grid">
+                    
+                    <!-- EBOOK 1 (PAID: Novels) - UPDATED IMAGE SOURCE -->
+                    <article class="item-card ebook-card" data-category="novel paid" data-delay="0" data-course-id="ebook-novel-classic" data-item-type="ebook">
+                        <img src="https://placehold.co/600x400/8b4513/ffffff?text=Victorian+Literature" alt="Classic English Novel E-book" class="rounded-t-lg">
+                        <div class="card-content">
+                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full mb-2 inline-block font-semibold">PAID E-BOOK</span>
+                            <h3 class="text-xl font-bold">The Classic English Novel Study Guide</h3>
+                            <p class="text-gray-600 mb-3">Analysis and summary of 5 essential 19th-century novels for advanced reading.</p>
+                            <p class="item-price text-2xl font-extrabold text-blue-700">PKR 800</p>
+                            <button class="btn btn-primary w-full mt-3 text-sm view-details-btn" data-course-id="ebook-novel-classic" data-item-type="ebook">View & Buy E-book</button>
+                        </div>
+                    </article>
+                    
+                    <!-- EBOOK 2 (PAID: Grammar) -->
+                    <article class="item-card ebook-card" data-category="grammar paid" data-delay="100" data-course-id="ebook-grammar-ultimate" data-item-type="ebook">
+                        <img src="https://placehold.co/600x400/007bff/ffffff?text=Ultimate+Grammar+PDF" alt="Ultimate Grammar Workbook E-book" class="rounded-t-lg">
+                        <div class="card-content">
+                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full mb-2 inline-block font-semibold">PAID E-BOOK</span>
+                            <h3 class="text-xl font-bold">The Ultimate Grammar Workbook (500+ Exercises)</h3>
+                            <p class="text-gray-600 mb-3">A comprehensive 250-page PDF with practice questions and detailed solutions.</p>
+                            <p class="item-price text-2xl font-extrabold text-blue-700">PKR 1200</p>
+                            <button class="btn btn-primary w-full mt-3 text-sm view-details-btn" data-course-id="ebook-grammar-ultimate" data-item-type="ebook">View & Buy E-book</button>
+                        </div>
+                    </article>
+
+                    <!-- EBOOK 3 (FREE: Improve Handwriting) -->
+                    <article class="item-card ebook-card" data-category="handwriting free" data-delay="200" data-course-id="ebook-handwriting-guide" data-item-type="ebook">
+                        <img src="https://placehold.co/600x400/25d366/1f2937?text=Handwriting+Practice" alt="Improve Handwriting Guide E-book" class="rounded-t-lg">
+                        <div class="card-content">
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full mb-2 inline-block font-semibold">FREE E-BOOK</span>
+                            <h3 class="text-xl font-bold">Improve Your Hand Writing Practice Sheets</h3>
+                            <p class="text-gray-600 mb-3">Free printable sheets to practice clear and legible cursive and block writing.</p>
+                            <p class="item-price text-2xl font-extrabold text-green-700">FREE</p>
+                            <button class="btn btn-secondary w-full mt-3 text-sm direct-download-btn" data-course-id="ebook-handwriting-guide" data-item-type="ebook">Download Free PDF</button>
+                        </div>
+                    </article>
+
+                    <!-- EBOOK 4 (PAID: Vocabulary) -->
+                    <article class="item-card ebook-card" data-category="notes paid" data-delay="300" data-course-id="ebook-vocab-1000" data-item-type="ebook">
+                        <img src="https://placehold.co/600x400/f59e0b/1f2937?text=1000+Words" alt="1000 High-Frequency Vocabulary E-book" class="rounded-t-lg">
+                        <div class="card-content">
+                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full mb-2 inline-block font-semibold">PAID E-BOOK</span>
+                            <h3 class="text-xl font-bold">1000 High-Frequency Words for Exams</h3>
+                            <p class="text-gray-600 mb-3">The definitive list of words critical for CSS, PMS, and other competitive exams.</p>
+                            <p class="item-price text-2xl font-extrabold text-blue-700">PKR 700</p>
+                            <button class="btn btn-primary w-full mt-3 text-sm view-details-btn" data-course-id="ebook-vocab-1000" data-item-type="ebook">View & Buy E-book</button>
+                        </div>
+                    </article>
+
+                    <!-- EBOOK 5 (FREE: Essay Outlines) -->
+                    <article class="item-card ebook-card" data-category="notes free" data-delay="400" data-course-id="ebook-essay-starter" data-item-type="ebook">
+                        <img src="https://placehold.co/600x400/9333ea/ffffff?text=Essay+Outlines" alt="Free Essay Starter E-book" class="rounded-t-lg">
+                        <div class="card-content">
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full mb-2 inline-block font-semibold">FREE E-BOOK</span>
+                            <h3 class="text-xl font-bold">Essay Starter Kit: 5 Free Outlines</h3>
+                            <p class="text-gray-600 mb-3">Get structured outlines for 5 common essay topics to kickstart your writing practice.</p>
+                            <p class="item-price text-2xl font-extrabold text-green-700">FREE</p>
+                            <button class="btn btn-secondary w-full mt-3 text-sm direct-download-btn" data-course-id="ebook-essay-starter" data-item-type="ebook">Download Free PDF</button>
+                        </div>
+                    </article>
+
+                    <!-- EBOOK 6 (FREE: 5+ more -> Public Speaking) -->
+                    <article class="item-card ebook-card" data-category="spoken free" data-delay="500" data-course-id="ebook-public-speaking" data-item-type="ebook">
+                        <img src="https://placehold.co/600x400/ffa8a8/1f2937?text=Public+Speaking" alt="Public Speaking Tips E-book" class="rounded-t-lg">
+                        <div class="card-content">
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full mb-2 inline-block font-semibold">FREE E-BOOK</span>
+                            <h3 class="text-xl font-bold">5 Essential Public Speaking Tips</h3>
+                            <p class="text-gray-600 mb-3">A quick guide to overcoming stage fear and delivering impactful presentations.</p>
+                            <p class="item-price text-2xl font-extrabold text-green-700">FREE</p>
+                            <button class="btn btn-secondary w-full mt-3 text-sm direct-download-btn" data-course-id="ebook-public-speaking" data-item-type="ebook">Download Free PDF</button>
+                        </div>
+                    </article>
+                    
+                </div>
+            </section>
+        </div>
+        
+        <!-- ============================================== -->
+        <!-- 4. ITEM DETAIL PAGE CONTENT (Courses/E-books) -->
+        <!-- ============================================== -->
+        <div id="item-details-page" class="page-content bg-gray-100 min-h-screen">
+            <div class="p-4 md:p-8">
+                <button id="back-to-listing" class="btn btn-primary my-4"><i class="fas fa-arrow-left mr-2"></i> Back to Listing</button>
+            </div>
+            <div id="item-details-content" class="p-4 md:p-8 bg-white shadow-lg rounded-t-lg max-w-4xl mx-auto">
+                <!-- Dynamic content will be injected here -->
+            </div>
+            
+            <!-- Action button specific to the item (WhatsApp or Direct Download) -->
+            <div class="p-4 md:p-8 border-t mt-8 sticky bottom-0 bg-white shadow-xl">
+                <!-- The button's look and action is set dynamically in JS -->
+                <button id="main-action-button" class="btn w-full text-lg shadow-lg hover:shadow-xl transition" data-item-name="" data-item-type="">
+                    Action Button
+                </button>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 5. OTHER STATIC PAGES (Group, Contact, Policies) -->
+        <!-- ============================================== -->
+        <div id="group-page" class="page-content bg-white min-h-screen">
+            <button class="btn btn-primary my-4 nav-link" data-page="home"><i class="fas fa-arrow-left mr-2"></i> Back to Home</button>
+            <div class="p-4 md:p-8">
+                <h2 class="text-3xl font-bold mb-4 text-blue-700">Exclusive Paid Group Details</h2>
+                <p class="text-lg mb-4">Join our premium WhatsApp group for direct mentorship, daily assignments, and live Q&A sessions.</p>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>**Yearly Subscription:** PKR 1000 (Limited Time Offer)</li>
+                    <li>**Content:** Exclusive CSS essay outlines, current affairs summaries, and grammar exercises.</li>
+                    <li>**Access:** Direct access to instructor for doubt resolution.</li>
+                </ul>
+                <button id="group-join-whatsapp" class="btn btn-accent text-lg mt-6" data-item-name="Exclusive Paid Group">Join the Group via WhatsApp <i class="fab fa-whatsapp ml-2"></i></button>
+            </div>
+        </div>
+
+        <div id="contact-page" class="page-content bg-white min-h-screen">
+            <button class="btn btn-primary my-4 nav-link" data-page="home"><i class="fas fa-arrow-left mr-2"></i> Back to Home</button>
+            <div class="p-4 md:p-8">
+                <h2 class="text-3xl font-bold mb-4 text-blue-700">Contact Spectrum English</h2>
+                <p>We are available to answer your queries:</p>
+                <ul class="mt-4 space-y-3">
+                    <li><i class="fab fa-whatsapp text-green-500 w-6"></i> WhatsApp: <a href="https://wa.me/923001234567" target="_blank" class="text-blue-500"> +92 300 1234567</a></li>
+                    <li><i class="fas fa-envelope text-red-500 w-6"></i> Email: <a href="mailto:contact@spectrumenglish.com" class="text-blue-500">contact@spectrumenglish.com</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="policies-page" class="page-content bg-white min-h-screen">
+            <button class="btn btn-primary my-4 nav-link" data-page="home"><i class="fas fa-arrow-left mr-2"></i> Back to Home</button>
+            <div class="p-4 md:p-8">
+                <h2 class="text-3xl font-bold mb-4 text-blue-700">Policies and Terms</h2>
+                <p class="text-lg">Please read our policies carefully before enrollment.</p>
+                <h3 class="text-xl font-semibold mt-4">Refund Policy</h3>
+                <p class="text-gray-700">All course fee payments are non-refundable once access to the material or group has been granted. Exceptions may apply in case of technical failure on our side.</p>
+                <h3 class="text-xl font-semibold mt-4">Privacy Policy</h3>
+                <p class="text-gray-700">Your personal information, including phone number, is kept strictly confidential and will only be used for course communication.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 6. FOOTER -->
+    <footer class="main-footer">
+        
+        <div class="max-w-4xl mx-auto">
+            <!-- Footer Navigation Links -->
+            <div class="flex justify-center space-x-4 mb-4 text-sm font-medium text-gray-300">
+                <a href="#" class="nav-link hover:text-white" data-page="home">Home</a>
+                <a href="#" class="nav-link hover:text-white" data-page="courses">Courses</a>
+                <a href="#" class="nav-link hover:text-white" data-page="ebooks">E-books</a> <!-- New Footer Link -->
+                <a href="#" class="nav-link hover:text-white" data-page="policies">Policies</a>
+            </div>
+
+            <!-- Contact Icons -->
+            <div class="contact-icons">
+                <h4 class="footer-heading">Contact Us</h4>
+                <a href="https://wa.me/923001234567" target="_blank" aria-label="Contact via WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:contact@spectrumenglish.com" target="_blank" aria-label="Contact via Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://facebook.com/spectrume" target="_blank" aria-label="Contact via Facebook"><i class="fab fa-facebook"></i></a>
+            </div>
+            
+            <!-- Join Social Media Icons -->
+            <div class="social-join-icons">
+                <h4 class="footer-heading">Join Our Channels</h4>
+                <a href="https://whatsapp.com/channel/0000000000" target="_blank" class="join-icon whatsapp-channel-join" aria-label="Join WhatsApp Channel"><i class="fab fa-whatsapp"></i> Channel</a> 
+                
+                <a href="https://tiktok.com/@spectrume" target="_blank" aria-label="Join TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://youtube.com/spectrume" target="_blank" aria-label="Join YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://instagram.com/spectrume" target="_blank" aria-label="Join Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <p class="copyright pt-4 border-t border-gray-700 mt-4">&copy; 2025 Spectrum English. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // --- JAVASCRIPT FOR ANIMATIONS AND FUNCTIONALITY ---
+
+        // CONSTANTS (Update these for production)
+        const WHATSAPP_NUMBER = "923001234567"; 
+        
+        // --- UPDATED PDF DOWNLOAD LINK ---
+        // This link is modified from the provided Google Drive link to force a PDF export/download.
+        const MOCK_PDF_DOWNLOAD_URL = "https://docs.google.com/document/d/1Ej7Mrrtpk-ZZ4IGJugTiqBa-REYc8tMI/export?format=pdf"; 
+
+        // 1. Unified Data Structure for Courses and E-books
+        const ITEM_DATA = {
+            // --- COURSE DATA ---
+            'grammar-master': { type: 'course', title: 'English Grammar Masterclass', price: 'PKR 2500 (One-time)', image: 'https://placehold.co/800x400/007bff/ffffff?text=Grammar+Course', description: 'This comprehensive masterclass covers every aspect of English grammar from basic tenses to advanced conditional sentences and direct/indirect speech. Perfect for competitive exams and building a strong foundation.', duration: '4 Weeks / Recorded Lectures + Live Q&A', features: ['Complete Tenses', 'Parts of Speech Deep Dive', 'Advanced Sentence Construction', 'Practice Quizzes'] },
+            'daily-vocab': { type: 'course', title: 'Daily Vocabulary (Recorded)', price: 'FREE', image: 'https://placehold.co/800x400/25d366/ffffff?text=Vocabulary+Free', description: 'Expand your lexicon with our free daily vocabulary series. Each lecture focuses on 10-15 high-utility words, synonyms, antonyms, and practical usage in sentences.', duration: 'Ongoing / Daily Short Videos', features: ['10-15 New Words Daily', 'Usage Examples', 'Thematic Vocabulary Lists', 'Free Access on YouTube/WhatsApp'] },
+            'css-notes': { type: 'course', title: 'Daily CSS Preparation Notes', price: 'PKR 1000/Month', image: 'https://placehold.co/800x400/fcd34d/1f2937?text=CSS+Notes', description: 'Get exclusive daily notes and outlines tailored for CSS/PMS exam preparation. Includes current affairs analysis, logical structuring for essays, and précis writing practice.', duration: 'Monthly Subscription', features: ['Daily Current Affairs Summary', 'Essay Outlines for Hot Topics', 'Precis Writing Practice', 'Vocabulary for Exams'] },
+            'dawn-analysis': { type: 'course', title: 'Daily Dawn Newspaper Analysis', price: 'PKR 1500/Month', image: 'https://placehold.co/800x400/9333ea/ffffff?text=Dawn+Analysis+Prep', description: 'An in-depth, focused analysis of the Daily Dawn editorial and opinion pages, crucial for developing critical thinking and comprehensive knowledge for high-level exams.', duration: 'Monthly Subscription / Daily Analysis', features: ['In-Depth Editorial Review', 'Key Terminology Extraction', 'Opinion Shaping Content', 'Live Discussion Access'] },
+            'parts-of-speech': { type: 'course', title: 'Advanced Parts of Speech Workshop', price: 'PKR 1800 (One-time)', image: 'https://placehold.co/800x400/ff6b6b/ffffff?text=Parts+of+Speech', description: 'A dedicated, intensive workshop focusing solely on complex usage of all eight Parts of Speech, identifying common errors, and applying rules accurately in advanced sentences.', duration: '2 Weeks / Live Sessions', features: ['In-depth Nouns, Verbs, Modifiers', 'Error Identification Drills', 'Complex Sentence Structure', '10 Live Practice Sessions'] },
+            'fluency-intensive': { type: 'course', title: 'Spoken English Fluency Intensive', price: 'PKR 3500 (One-time)', image: 'https://placehold.co/800x400/ff9f43/1f2937?text=Fluency+Intensive', description: 'A practical, application-based course designed to overcome hesitation, improve pronunciation, and build confidence in real-world spoken English scenarios. Heavy emphasis on role-playing and conversational skills.', duration: '6 Weeks / Daily Practice', features: ['Confidence Building Drills', 'Daily Role-Playing Scenarios', 'Accent Neutralization', 'Weekly Evaluation by Instructor'] },
+            'essay-writing': { type: 'course', title: 'Academic Essay Writing Techniques', price: 'PKR 2200 (One-time)', image: 'https://placehold.co/800x400/54a0ff/ffffff?text=Essay+Writing+Skills', description: 'Learn the structured approach to writing high-scoring academic essays for competitive exams, focusing on thesis statements, coherence, powerful argumentation, and citation techniques.', duration: '3 Weeks / Assignment Based', features: ['Thesis Statement Mastery', 'Coherence & Cohesion', 'Argumentative Structure', '2 Essay Graded Feedback'] },
+            'pms-prep': { type: 'course', title: 'PMS English Comprehensive Prep', price: 'PKR 4000 (One-time)', image: 'https://placehold.co/800x400/c738d8/ffffff?text=PMS+Prep', description: 'A focused preparation module specifically covering the English components (Precis, Composition, Grammar) required for the Provincial Management Service (PMS) exams, featuring past paper practice.', duration: '8 Weeks / Full Syllabus Coverage', features: ['Targeted PMS Syllabus Coverage', 'Weekly Mock Exams', 'Precis and Translation Practice', 'Dedicated Instructor Support'] },
+            'vocab-live': { type: 'course', title: 'Live Advanced Vocabulary Building', price: 'PKR 900/Month', image: 'https://placehold.co/800x400/1dd1a1/1f2937?text=Advanced+Vocab', description: 'Interactive live sessions dedicated to mastering high-frequency words and nuanced vocabulary essential for expressing complex ideas in writing and speech for advanced learners.', duration: 'Monthly Subscription / Live', features: ['100 New Words Monthly', 'Usage in Context Practice', 'Synonym Differentiation', 'Interactive Quizzes'] },
+            'pronunciation-basics': { type: 'course', title: 'Basic English Pronunciation Guide', price: 'FREE', image: 'https://placehold.co/800x400/ffa8a8/1f2937?text=Pronunciation+Free', description: 'A completely free introductory course to the basic sounds and common pronunciation rules of English. Focuses on the IPA (International Phonetic Alphabet) basics and common mispronunciations for clear communication.', duration: '1 Week / Recorded Videos', features: ['Vowels and Consonants Practice', 'Stress and Intonation Basics', 'Common Mispronunciations', 'Lifetime Free Access'] },
+            
+            // --- EBOOK DATA ---
+            // UPDATED IMAGE FOR NOVELS EBOOK
+            'ebook-novel-classic': { type: 'ebook', title: 'The Classic English Novel Study Guide', price: 'PKR 800', isFree: false, image: 'https://placehold.co/800x400/8b4513/ffffff?text=Victorian+Literature', description: 'An in-depth guide covering plot summaries, character analysis, and thematic explorations for 5 major 19th-century English novels (e.g., Pride and Prejudice, Great Expectations). Essential for literature students and advanced readers.', format: 'PDF (200 pages)', features: ['5 Novel Summaries', 'Character Maps', 'Literary Theme Analysis', 'Study Questions'] },
+            'ebook-grammar-ultimate': { type: 'ebook', title: 'The Ultimate Grammar Workbook (500+ Exercises)', price: 'PKR 1200', isFree: false, image: 'https://placehold.co/800x400/007bff/ffffff?text=Ultimate+Grammar+PDF', description: 'The definitive grammar practice book. Contains over 500 exercises covering all parts of speech, active/passive voice, narration, and conditional sentences, complete with a detailed answer key.', format: 'PDF (250 pages)', features: ['500+ Practice Questions', 'Detailed Answer Key', 'Advanced Grammar Rules', 'Printable Format'] },
+            'ebook-handwriting-guide': { type: 'ebook', title: 'Improve Your Hand Writing Practice Sheets', price: 'FREE', isFree: true, image: 'https://placehold.co/800x400/25d366/1f2937?text=Handwriting+Practice', description: 'Free printable workbook designed to improve legibility and speed. Includes drills for correct letter formation, spacing, and consistency for both block and cursive styles.', format: 'PDF (50 pages)', features: ['Letter Formation Drills', 'Cursive and Block Styles', 'Spacing Guidelines', 'Lifetime Free Download'] },
+            'ebook-vocab-1000': { type: 'ebook', title: '1000 High-Frequency Words for Exams', price: 'PKR 700', isFree: false, image: 'https://placehold.co/800x400/f59e0b/1f2937?text=1000+Words', description: 'A crucial resource for test preparation. Master the 1000 most frequently appearing words in competitive English exams, complete with meanings, synonyms, and usage examples.', format: 'PDF (150 pages)', features: ['1000 Essential Words', 'Synonym/Antonym Lists', 'Contextual Usage Examples', 'Exam-Focused Content'] },
+            'ebook-essay-starter': { type: 'ebook', title: 'Essay Starter Kit: 5 Free Outlines', price: 'FREE', isFree: true, image: 'https://placehold.co/800x400/9333ea/ffffff?text=Essay+Outlines', description: 'A free resource providing structured, detailed outlines for five major contemporary essay topics, helping you plan and organize your arguments efficiently before writing.', format: 'PDF (20 pages)', features: ['5 Ready-to-use Outlines', 'Thesis Statement Templates', 'Argumentation Flow', 'Free Download'] },
+            'ebook-public-speaking': { type: 'ebook', title: '5 Essential Public Speaking Tips', price: 'FREE', isFree: true, image: 'https://placehold.co/800x400/ffa8a8/1f2937?text=Public+Speaking', description: 'A concise and practical guide offering five key techniques to enhance your public speaking skills, overcome performance anxiety, and engage your audience effectively.', format: 'PDF (10 pages)', features: ['Body Language Tips', 'Voice Modulation Guide', 'Anxiety Reduction Techniques', 'Free Download'] }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.getElementById('nav-links');
+            
+            // Item Listings
+            const courseGrid = document.getElementById('course-grid');
+            const ebookGrid = document.getElementById('ebook-grid');
+            
+            // Filters
+            const courseCategoriesList = document.getElementById('course-categories-list');
+            const ebookCategoriesList = document.getElementById('ebook-categories-list');
+
+            // Pages
+            const homePage = document.getElementById('home-page');
+            const ebooksPage = document.getElementById('ebooks-page');
+            const itemDetailsPage = document.getElementById('item-details-page'); // Unified Detail Page
+            const groupPage = document.getElementById('group-page');
+            const contactPage = document.getElementById('contact-page');
+            const policiesPage = document.getElementById('policies-page');
+            
+            const mainActionButton = document.getElementById('main-action-button');
+            
+            const pages = {
+                'home': homePage, 
+                'courses': homePage, 
+                'ebooks': ebooksPage, 
+                'detail': itemDetailsPage, 
+                'group': groupPage,
+                'contact': contactPage,
+                'policies': policiesPage
+            };
+            
+            // --- HANDLERS ---
+
+            // Function to handle direct PDF download
+            function initiateDownload(itemName) {
+                // The URL is MOCK_PDF_DOWNLOAD_URL, which points to the shared Google Drive link.
+                // It is set up to force a PDF export/download.
+                const downloadUrl = MOCK_PDF_DOWNLOAD_URL;
+                
+                // Use an anchor tag to trigger a download
+                const link = document.createElement('a');
+                link.href = downloadUrl;
+                link.download = itemName.replace(/[^a-z0-9]/gi, '_') + '.pdf'; // Sanitized filename
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                console.log(`Download initiated for: ${itemName} from ${downloadUrl}`);
+            }
+
+            // Function to handle WhatsApp action
+            function initiateWhatsApp(itemName, itemType, isGroup = false) {
+                let action;
+                if (isGroup) {
+                    action = "joining";
+                } else if (itemType === 'ebook') {
+                    action = "purchasing the E-book";
+                } else {
+                    action = "enrolling in the course";
+                }
+                
+                const message = `Hello, I am interested in ${action}: ${itemName}. Please share the details and next steps.`;
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+                
+                window.open(whatsappUrl, '_blank');
+            }
+
+
+            // --- NAVIGATION FUNCTIONS ---
+
+            // Function to switch between pages
+            function navigateTo(pageId, itemId = null, itemType = null) {
+                // Deactivate all pages
+                Object.values(pages).forEach(page => page.classList.remove('active'));
+                
+                // Activate the requested page
+                const targetPage = pages[pageId];
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                } else {
+                    homePage.classList.add('active');
+                }
+                
+                if (pageId === 'detail' && itemId && itemType) {
+                    loadItemDetails(itemId, itemType);
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+
+                if (pageId === 'courses') {
+                    document.getElementById('courses-listing').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            }
+
+            // Function to load dynamic item details (Course or Ebook)
+            function loadItemDetails(itemId, itemType) {
+                const data = ITEM_DATA[itemId];
+                const contentDiv = document.getElementById('item-details-content');
+                const backBtn = document.getElementById('back-to-listing');
+
+                if (!data || data.type !== itemType) {
+                    contentDiv.innerHTML = '<p class="text-red-500">Error: Item details not found.</p>';
+                    mainActionButton.style.display = 'none';
+                    return;
+                }
+                
+                const isEbook = data.type === 'ebook';
+                const isFree = data.price.includes('FREE');
+                
+                // --- Configure Main Action Button ---
+                mainActionButton.style.display = 'block';
+                mainActionButton.setAttribute('data-item-name', data.title);
+                mainActionButton.setAttribute('data-item-type', itemType);
+
+                // Clear existing event listeners
+                mainActionButton.replaceWith(mainActionButton.cloneNode(true));
+                const newActionButton = document.getElementById('main-action-button');
+
+                if (isFree && isEbook) {
+                    // FREE E-book: Direct Download
+                    newActionButton.textContent = `Download Your Free E-book (${data.format.split('(')[0].trim()}) `;
+                    newActionButton.classList.remove('btn-primary', 'btn-accent');
+                    newActionButton.classList.add('btn-secondary', 'text-blue-700');
+                    newActionButton.innerHTML += '<i class="fas fa-download ml-2"></i>';
+                    newActionButton.addEventListener('click', () => initiateDownload(data.title));
+                } else {
+                    // PAID or FREE Course: WhatsApp Contact (Enroll/Buy)
+                    const actionVerb = isFree ? 'Start Learning' : (isEbook ? 'Buy Now' : 'Enroll Now');
+                    newActionButton.textContent = `${actionVerb} via WhatsApp`;
+                    newActionButton.classList.remove('btn-secondary', 'text-blue-700');
+                    newActionButton.classList.add('btn-accent');
+                    newActionButton.innerHTML += '<i class="fab fa-whatsapp ml-2"></i>';
+                    newActionButton.addEventListener('click', () => initiateWhatsApp(data.title, itemType));
+                }
+
+                // --- Build Detail Content ---
+                const featuresList = data.features ? data.features.map(f => `<li class="flex items-start text-gray-700"><i class="fas fa-check-square text-green-500 mr-3 mt-1"></i> ${f}</li>`).join('') : '';
+
+                const primaryTagContent = isEbook ? 
+                    `<i class="fas fa-file-pdf mr-2"></i> Format: ${data.format}` :
+                    `<i class="fas fa-clock mr-2"></i> Duration: ${data.duration}`;
+                
+                const detailHTML = `
+                    <div class="p-0">
+                        <img src="${data.image}" alt="${data.title}" class="w-full h-auto rounded-t-lg mb-6 shadow-md">
+                        <div class="p-4 md:p-8">
+                            <h1 class="text-4xl font-extrabold mb-3 text-gray-800">${data.title}</h1>
+                            <p class="text-2xl font-bold ${isFree ? 'text-green-600' : 'text-blue-700'} mb-4">${data.price}</p>
+                            
+                            <h3 class="text-xl font-semibold mt-6 mb-2 text-gray-700">Description</h3>
+                            <p class="text-gray-600 mb-6">${data.description}</p>
+                            
+                            <div class="flex flex-wrap gap-4 mb-6">
+                                <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-4 py-2 rounded-full">${primaryTagContent}</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-4 py-2 rounded-full"><i class="fas fa-tag mr-2"></i> ${isEbook ? 'E-book Resource' : 'Online Course'}</span>
+                            </div>
+                            
+                            <h3 class="text-xl font-semibold mt-6 mb-3 text-gray-700">What You Will Get</h3>
+                            <ul class="space-y-2 list-none pl-0">
+                                ${featuresList}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+
+                contentDiv.innerHTML = detailHTML;
+                
+                // Update Back button functionality
+                const backPage = isEbook ? 'ebooks' : 'courses';
+                backBtn.onclick = () => navigateTo(backPage);
+            }
+
+            // --- 2. Event Listeners ---
+            
+            // Hamburger Menu Toggle
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = navToggle.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+
+            // Link Handlers (SPA Routing)
+            document.querySelectorAll('.nav-link').forEach(element => {
+                element.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        const icon = navToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                    const pageId = element.getAttribute('data-page');
+                    navigateTo(pageId);
+                });
+            });
+
+            // Detail button handler (for Paid items and Courses)
+            document.querySelectorAll('.view-details-btn').forEach(element => {
+                element.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const itemId = element.getAttribute('data-course-id');
+                    const itemType = element.getAttribute('data-item-type');
+                    navigateTo('detail', itemId, itemType);
+                });
+            });
+            
+            // DIRECT DOWNLOAD handler (for FREE E-books on the listing page)
+            document.querySelectorAll('.direct-download-btn').forEach(element => {
+                element.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const itemId = element.getAttribute('data-course-id');
+                    const itemData = ITEM_DATA[itemId];
+                    if (itemData && itemData.isFree) {
+                        initiateDownload(itemData.title);
+                    } else {
+                        // If somehow a non-free item gets this button, fallback to detail view
+                        navigateTo('detail', itemId, itemData.type);
+                    }
+                });
+            });
+
+
+            // WhatsApp for Paid Group
+            const groupJoinBtn = document.getElementById('group-join-whatsapp');
+            if (groupJoinBtn) {
+                groupJoinBtn.addEventListener('click', () => {
+                    initiateWhatsApp("Exclusive Paid Group", 'group', true);
+                });
+            }
+
+
+            // --- 3. Item Filtering Logic (Unified function) ---
+            function setupFiltering(listId, gridId, itemType) {
+                const list = document.getElementById(listId);
+                const grid = document.getElementById(gridId);
+                if (!list || !grid) return;
+
+                list.querySelectorAll('.category-filter').forEach(filter => {
+                    filter.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        
+                        if (e.target.getAttribute('data-type') !== itemType) return;
+
+                        list.querySelectorAll('.category-filter').forEach(f => f.classList.remove('active'));
+                        e.target.classList.add('active');
+
+                        const filterValue = e.target.getAttribute('data-filter');
+                        const itemCards = grid.querySelectorAll(`.item-card[data-item-type="${itemType}"]`);
+
+                        itemCards.forEach(card => {
+                            const categories = card.getAttribute('data-category');
+                            
+                            card.style.display = 'none';
+                            card.classList.remove('visible');
+
+                            if (filterValue === 'all' || categories.includes(filterValue)) {
+                                card.style.display = 'block';
+                                
+                                setTimeout(() => {
+                                    card.classList.add('visible');
+                                }, parseInt(card.getAttribute('data-delay')) || 0);
+                            }
+                        });
+                    });
+                });
+            }
+
+            setupFiltering('course-categories-list', 'course-grid', 'course');
+            setupFiltering('ebook-categories-list', 'ebook-grid', 'ebook');
+
+
+            // --- 4. Intersection Observer for Smooth Fade-In Animations ---
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    const parentPage = entry.target.closest('.page-content');
+                    if (entry.isIntersecting && parentPage && parentPage.classList.contains('active')) {
+                        const delay = parseInt(entry.target.getAttribute('data-delay')) || 0;
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, delay);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.item-card').forEach(card => observer.observe(card));
+            document.querySelectorAll('.animate-fade-in').forEach(el => observer.observe(el));
+            
+            // Initial Filtering/Loading (Ensure the home page items are visible on load)
+            const initialFilter = document.querySelector('#course-categories-list .category-filter.active');
+            if(initialFilter) {
+                initialFilter.click();
+            }
+
+        });
+    </script>
+</body>
+</html>
