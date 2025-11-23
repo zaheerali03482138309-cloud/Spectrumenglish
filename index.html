@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spectrum English - Online Courses & E-books</title>
+    <title>Spectrum English - Online Courses & Study Materials</title>
     <!-- Tailwind CSS is loaded for rapid, responsive styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -102,6 +102,30 @@
             border-bottom: 2px solid #f3f4f6;
         }
 
+        /* 8. Study Material Image Styling */
+        .study-material-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            border-bottom: 2px solid #f3f4f6;
+        }
+
+        /* 9. Button Styles for Study Materials */
+        .btn-download {
+            background-color: #007bff;
+            transition: background-color 0.3s;
+        }
+        .btn-download:hover {
+            background-color: #0056b3;
+        }
+        .btn-share {
+            background-color: #6c757d;
+            transition: background-color 0.3s;
+        }
+        .btn-share:hover {
+            background-color: #545b62;
+        }
+
     </style>
 </head>
 <body class="min-h-screen">
@@ -119,7 +143,7 @@
             <nav class="hidden md:flex space-x-8">
                 <a href="#home" class="nav-link text-gray-600 hover:text-blue-600 pb-1" data-page="home">Home</a>
                 <a href="#courses" class="nav-link text-gray-600 hover:text-blue-600 pb-1" data-page="courses">Courses</a>
-                <a href="#ebooks" class="nav-link text-gray-600 hover:text-blue-600 pb-1" data-page="ebooks">E-books</a>
+                <a href="#ebooks" class="nav-link text-gray-600 hover:text-blue-600 pb-1" data-page="ebooks">Study Materials</a>
                 <a href="#contact" class="nav-link text-gray-600 hover:text-blue-600 pb-1" data-page="contact">Contact</a>
             </nav>
             
@@ -146,7 +170,7 @@
             <nav class="flex flex-col space-y-4">
                 <a href="#home" class="mobile-nav-link text-gray-800 hover:text-blue-600 text-lg py-2 border-b" data-page="home">Home</a>
                 <a href="#courses" class="mobile-nav-link text-gray-800 hover:text-blue-600 text-lg py-2 border-b" data-page="courses">Courses</a>
-                <a href="#ebooks" class="mobile-nav-link text-gray-800 hover:text-blue-600 text-lg py-2 border-b" data-page="ebooks">E-books</a>
+                <a href="#ebooks" class="mobile-nav-link text-gray-800 hover:text-blue-600 text-lg py-2 border-b" data-page="ebooks">Study Materials</a>
                 <a href="#contact" class="mobile-nav-link text-gray-800 hover:text-blue-600 text-lg py-2 border-b" data-page="contact">Contact</a>
                 <a href="https://wa.me/923013858453?text=Assalamualikum.%20I%20am%20interested%20in%20your%20English%20Course." target="_blank" class="btn-whatsapp text-white text-center px-4 py-3 mt-4 rounded-lg font-semibold shadow-lg">
                     <i class="fab fa-whatsapp mr-2"></i> Enroll Now
@@ -236,7 +260,7 @@
                 
                 <!-- Course 1: Improve Your English Vocabulary -->
                 <div class="item-card bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl" data-category="paid grammar" data-delay="100">
-                    <img src="https://placehold.co/600x150/007bff/ffffff?text=VOCABULARY+MASTERY" alt="Improve Your English Vocabulary Course" class="course-card-img">
+                    <img src="D:\Spectrum English 1\Pink and Yellow Playful Learn English YouTube Thumbnail.png" alt="Improve Your English Vocabulary Course" class="course-card-img">
                     <div class="p-6">
                         <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full mb-3">BESTSELLER</span>
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Improve Your English Vocabulary & Speaking Skills</h3>
@@ -259,7 +283,7 @@
 
                 <!-- Course 2: Daily English & Current Affairs -->
                 <div class="item-card bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl" data-category="paid paid-groups" data-delay="200">
-                    <img src="https://placehold.co/600x150/25d366/000000?text=DAILY+ENGLISH" alt="Daily English & Current Affairs Course" class="course-card-img">
+                    <img src= "D:\Spectrum English 1\Green and White Tutorials YouTube Thumbnail.png"alt="Daily English & Current Affairs Course" class="course-card-img">
                     <div class="p-6">
                         <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full mb-3">DAILY UPDATES</span>
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Daily English & Current Affairs Package</h3>
@@ -282,7 +306,7 @@
 
                 <!-- Course 3: All Jobs Preparation -->
                 <div class="item-card bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl" data-category="paid jobs paid-groups" data-delay="300">
-                    <img src="https://placehold.co/600x150/ef4444/ffffff?text=JOBS+PREPARATION" alt="All Jobs Preparation Course" class="course-card-img">
+                    <img src="D:\Spectrum English 1\aj2.png"alt="All Jobs Preparation Course" class="course-card-img">
                     <div class="p-6">
                         <span class="inline-block bg-red-100 text-red-800 text-xs font-semibold px-3 py-1 rounded-full mb-3">COMPREHENSIVE</span>
                         <h3 class="text-xl font-bold text-gray-800 mb-2">All Jobs Preparation Course</h3>
@@ -305,7 +329,7 @@
 
                 <!-- Course 4: CSS Preparation -->
                 <div class="item-card bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl" data-category="paid jobs paid-groups" data-delay="400">
-                    <img src="https://placehold.co/600x150/8b5cf6/ffffff?text=CSS+PREPARATION" alt="CSS Preparation Course" class="course-card-img">
+                    <img src="D:\Spectrum English 1\css1.png" alt="CSS Preparation Course" class="course-card-img">
                     <div class="p-6">
                         <span class="inline-block bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full mb-3">PROFESSIONAL</span>
                         <h3 class="text-xl font-bold text-gray-800 mb-2">CSS Preparation Course</h3>
@@ -328,7 +352,7 @@
 
                 <!-- Course 5: English Grammar -->
                 <div class="item-card bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl" data-category="paid grammar" data-delay="500">
-                    <img src="https://placehold.co/600x150/f59e0b/000000?text=ENGLISH+GRAMMAR" alt="English Grammar Course" class="course-card-img">
+                    <img src="D:\Spectrum English 1\g1.png"alt="English Grammar Course" class="course-card-img">
                     <div class="p-6">
                         <span class="inline-block bg-yellow-100 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full mb-3">FOUNDATION</span>
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Complete English Grammar Course</h3>
@@ -351,7 +375,7 @@
 
                 <!-- Course 6: Spoken English -->
                 <div class="item-card bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl" data-category="paid paid-groups" data-delay="600">
-                    <img src="https://placehold.co/600x150/06b6d4/ffffff?text=SPOKEN+ENGLISH" alt="Spoken English Course" class="course-card-img">
+                    <img src="D:\Spectrum English 1\s1.png"alt="Spoken English Course" class="course-card-img">
                     <div class="p-6">
                         <span class="inline-block bg-cyan-100 text-cyan-800 text-xs font-semibold px-3 py-1 rounded-full mb-3">PRACTICAL</span>
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Complete Spoken English Course</h3>
@@ -372,95 +396,335 @@
                     </div>
                 </div>
 
+                <!-- FREE COURSES - Added PDF Materials as Free Courses -->
+                
+                <!-- Free Course 1: 80+ English Vocabulary -->
+                <div class="item-card bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl" data-category="free" data-delay="700">
+                    <img src="D:\Spectrum English 1\Forest Green and Brown Schoology Course Card.png" alt="80+ English Vocabulary" class="course-card-img">
+                    <div class="p-6">
+                        <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full mb-3">FREE</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">80+ English Vocabulary</h3>
+                        <p class="text-sm text-gray-500 mb-4">Free vocabulary building guide with essential words and phrases.</p>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-4">
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i> 80+ Essential Vocabulary Words</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i> Usage Examples</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i> Pronunciation Guide</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i> Practice Exercises</li>
+                        </ul>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-2xl font-extrabold text-green-600">FREE</span>
+                            <a href="https://drive.google.com/file/d/1loPIWopkgxkXmaWydqWk-aHx0i_nMoJC/view?usp=drive_link" target="_blank" class="btn-download text-white px-4 py-2 text-sm rounded-lg font-semibold">
+                                Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Free Course 2: 999+ English Verbs -->
+                <div class="item-card bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl" data-category="free" data-delay="800">
+                    <img src="D:\Spectrum English 1\Navy and White Colorful Playful English Schoology Course Card.png" alt="999+ English Verbs" class="course-card-img">
+                    <div class="p-6">
+                        <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full mb-3">FREE</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">999+ English Verbs</h3>
+                        <p class="text-sm text-gray-500 mb-4">Comprehensive list of English verbs with tenses and usage.</p>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-4">
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i> 999+ Essential Verbs</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i> All Tenses Covered</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i> Regular & Irregular Verbs</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i> Usage Examples</li>
+                        </ul>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-2xl font-extrabold text-green-600">FREE</span>
+                            <a href="https://drive.google.com/file/d/1aWMiXyrW9tYROACf-rXlhrvitbRWRIH0/view?usp=drive_link" target="_blank" class="btn-download text-white px-4 py-2 text-sm rounded-lg font-semibold">
+                                Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Free Course 3: Free WhatsApp Groups -->
+                <div class="item-card bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl" data-category="free free-groups" data-delay="900">
+                    <img src="https://placehold.co/600x150/25d366/ffffff?text=FREE+WHATSAPP" alt="Free WhatsApp Groups" class="course-card-img">
+                    <div class="p-6">
+                        <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full mb-3">FREE GROUP</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Free WhatsApp Learning Groups</h3>
+                        <p class="text-sm text-gray-500 mb-4">Join our free WhatsApp channel for daily English learning content.</p>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-4">
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i> Daily Vocabulary</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i> Grammar Tips</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i> Speaking Practice</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i> Current Affairs Updates</li>
+                        </ul>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-2xl font-extrabold text-green-600">FREE</span>
+                            <a href="https://whatsapp.com/channel/0029VaM7wls7dmeYl8byGX47" target="_blank" class="btn-whatsapp text-white px-4 py-2 text-sm rounded-lg font-semibold">
+                                Join Group
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
 
-        <!-- E-books Page Content - FIXED: Added proper ebooks content -->
+        <!-- Study Materials Page Content - UPDATED: Only PDF Materials -->
         <section id="ebooks-page" class="page-content" data-page="ebooks">
-            <h2 class="text-4xl font-bold text-gray-800 mb-8 animate-fade-in">E-books & Study Material</h2>
+            <h2 class="text-4xl font-bold text-gray-800 mb-8 animate-fade-in">Study Materials</h2>
             
-            <!-- Category Filters for Ebooks -->
-            <div id="ebook-categories-list" class="flex space-x-6 border-b border-gray-200 mb-6 overflow-x-auto">
-                <div class="category-filter active py-3 px-2" data-filter="all-ebooks">All E-books</div>
-                <div class="category-filter py-3 px-2" data-filter="vocabulary">Vocabulary</div>
-                <div class="category-filter py-3 px-2" data-filter="phrasal-verbs">Phrasal Verbs</div>
-                <div class="category-filter py-3 px-2" data-filter="essay">Essay Writing</div>
-                <div class="category-filter py-3 px-2" data-filter="grammar">Grammar</div>
-                <div class="category-filter py-3 px-2" data-filter="ielts">IELTS</div>
-            </div>
-
-            <!-- Ebook Grid -->
+            <!-- PDF Materials Grid -->
             <div id="ebook-grid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
                 
-                <!-- Ebook 1: Vocabulary -->
-                <div class="item-card item-card-ebook bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="vocabulary" data-delay="100">
-                    <img src="https://placehold.co/400x550/007bff/ffffff?text=VOCAB+3000" alt="Vocabulary Ebook" class="w-full h-auto object-cover">
+                <!-- PDF Materials - All the PDF files -->
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="100">
+                    <img src="https://placehold.co/400x300/007bff/ffffff?text=80%2B+Vocabulary" alt="80+ English Vocabulary" class="study-material-img">
                     <div class="p-4">
-                        <h3 class="text-md font-bold text-gray-800 mb-1">Vocabulary 3000</h3>
-                        <p class="text-sm font-semibold text-red-600 mb-3">PKR 350</p>
-                        <a href="https://wa.me/923013858453?text=Interested%20in%20Vocabulary%20Ebook." target="_blank" class="btn-whatsapp text-white px-3 py-1 text-xs rounded font-semibold">
-                            Get Now
+                        <h3 class="text-md font-bold text-gray-800 mb-1">80+ English Vocabulary</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/1loPIWopkgxkXmaWydqWk-aHx0i_nMoJC/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
                         </a>
                     </div>
                 </div>
 
-                <!-- Ebook 2: Phrasal Verbs -->
-                <div class="item-card item-card-ebook bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="phrasal-verbs" data-delay="200">
-                    <img src="https://placehold.co/400x550/25d366/000000?text=Phrasal+Verbs+Guide" alt="Phrasal Verbs Ebook" class="w-full h-auto object-cover">
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="150">
+                    <img src="https://placehold.co/400x300/25d366/000000?text=999%2B+Verbs" alt="999+ English Verbs" class="study-material-img">
                     <div class="p-4">
-                        <h3 class="text-md font-bold text-gray-800 mb-1">Phrasal Verbs Guide</h3>
-                        <p class="text-sm font-semibold text-red-600 mb-3">PKR 400</p>
-                        <a href="https://wa.me/923013858453?text=Interested%20in%20Phrasal%20Verbs%20Ebook." target="_blank" class="btn-whatsapp text-white px-3 py-1 text-xs rounded font-semibold">
-                            Get Now
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Ebook 3: Essay Writing -->
-                <div class="item-card item-card-ebook bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="essay" data-delay="300">
-                    <img src="https://placehold.co/400x550/1f2937/ffffff?text=IELTS+WRITING" alt="IELTS Writing Ebook" class="w-full h-auto object-cover">
-                    <div class="p-4">
-                        <h3 class="text-md font-bold text-gray-800 mb-1">IELTS Writing Strategy</h3>
-                        <p class="text-sm font-semibold text-red-600 mb-3">PKR 500</p>
-                        <a href="https://wa.me/923013858453?text=Interested%20in%20IELTS%20Writing%20Ebook." target="_blank" class="btn-whatsapp text-white px-3 py-1 text-xs rounded font-semibold">
-                            Get Now
+                        <h3 class="text-md font-bold text-gray-800 mb-1">999+ English Verbs</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/1aWMiXyrW9tYROACf-rXlhrvitbRWRIH0/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
                         </a>
                     </div>
                 </div>
 
-                <!-- Ebook 4: Grammar Master -->
-                <div class="item-card item-card-ebook bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="grammar" data-delay="400">
-                    <img src="https://placehold.co/400x550/f59e0b/000000?text=GRAMMAR+MASTER" alt="Grammar Master Ebook" class="w-full h-auto object-cover">
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="200">
+                    <img src="https://placehold.co/400x300/ef4444/ffffff?text=4000%2B+GK+MCQs" alt="4000+ GK MCQs" class="study-material-img">
                     <div class="p-4">
-                        <h3 class="text-md font-bold text-gray-800 mb-1">Complete Grammar Guide</h3>
-                        <p class="text-sm font-semibold text-red-600 mb-3">PKR 450</p>
-                        <a href="https://wa.me/923013858453?text=Interested%20in%20Grammar%20Guide%20Ebook." target="_blank" class="btn-whatsapp text-white px-3 py-1 text-xs rounded font-semibold">
-                            Get Now
+                        <h3 class="text-md font-bold text-gray-800 mb-1">4000+ GK MCQs</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/1qe7Hcv40g1TUjJ7zRf2w3-Vc5tWUTuQ9/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
                         </a>
                     </div>
                 </div>
 
-                <!-- Ebook 5: IELTS Speaking -->
-                <div class="item-card item-card-ebook bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="ielts" data-delay="500">
-                    <img src="https://placehold.co/400x550/ef4444/ffffff?text=IELTS+SPEAKING" alt="IELTS Speaking Ebook" class="w-full h-auto object-cover">
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="250">
+                    <img src="https://placehold.co/400x300/f59e0b/000000?text=Dawn+News+10+Oct" alt="Daily Dawn News 10 October 2025" class="study-material-img">
                     <div class="p-4">
-                        <h3 class="text-md font-bold text-gray-800 mb-1">IELTS Speaking Success</h3>
-                        <p class="text-sm font-semibold text-red-600 mb-3">PKR 550</p>
-                        <a href="https://wa.me/923013858453?text=Interested%20in%20IELTS%20Speaking%20Ebook." target="_blank" class="btn-whatsapp text-white px-3 py-1 text-xs rounded font-semibold">
-                            Get Now
+                        <h3 class="text-md font-bold text-gray-800 mb-1">Dawn News 10 Oct 2025</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/1gvKuY49LtBYgWdK4YA8Y0YnefgLdzGao/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
                         </a>
                     </div>
                 </div>
 
-                <!-- Ebook 6: Business English -->
-                <div class="item-card item-card-ebook bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="vocabulary" data-delay="600">
-                    <img src="https://placehold.co/400x550/8b5cf6/ffffff?text=BUSINESS+ENGLISH" alt="Business English Ebook" class="w-full h-auto object-cover">
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="300">
+                    <img src="https://placehold.co/400x300/8b5cf6/ffffff?text=Dawn+News+12+Oct" alt="Daily Dawn News 12 October 2025" class="study-material-img">
                     <div class="p-4">
-                        <h3 class="text-md font-bold text-gray-800 mb-1">Business English</h3>
-                        <p class="text-sm font-semibold text-red-600 mb-3">PKR 600</p>
-                        <a href="https://wa.me/923013858453?text=Interested%20in%20Business%20English%20Ebook." target="_blank" class="btn-whatsapp text-white px-3 py-1 text-xs rounded font-semibold">
-                            Get Now
+                        <h3 class="text-md font-bold text-gray-800 mb-1">Dawn News 12 Oct 2025</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/1TqQ4sICozedsfaizUWLqLC0KqHrN8RHA/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="350">
+                    <img src="https://placehold.co/400x300/dc2626/ffffff?text=Dawn+News+14+Oct" alt="Daily Dawn News 14 October 2025" class="study-material-img">
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-gray-800 mb-1">Dawn News 14 Oct 2025</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/1a1UJR8a8-u3y_vexL7tHa8s2Ezk4CMiO/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="400">
+                    <img src="https://placehold.co/400x300/059669/ffffff?text=Dawn+Editorial+1" alt="Dawn Editorial 1" class="study-material-img">
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-gray-800 mb-1">Dawn Editorial 1</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/1lJcEqPyaCx0kCxP3EuRoNGr7gD-h3MEn/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="450">
+                    <img src="https://placehold.co/400x300/7c3aed/ffffff?text=Dawn+Editorial+4" alt="Dawn Editorial 4" class="study-material-img">
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-gray-800 mb-1">Dawn Editorial 4</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/1fdjXfytwWcdiAQHVPdVuPVigIN4HcX6Y/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="500">
+                    <img src="https://placehold.co/400x300/ea580c/ffffff?text=Dawn+Editorial+10" alt="Dawn Editorial 10" class="study-material-img">
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-gray-800 mb-1">Dawn Editorial 10</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/1_WuSVH_80U01SrB-ty3J-HRWshAZqdum/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="550">
+                    <img src="https://placehold.co/400x300/0d9488/ffffff?text=Dawn+Opinion+2" alt="Dawn Opinion 2" class="study-material-img">
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-gray-800 mb-1">Dawn Opinion 2</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/1Kj-V-oiaMk0BbZ663yhsxEgsAXN_tkOX/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="600">
+                    <img src="https://placehold.co/400x300/007bff/ffffff?text=Dawn+Opinion+8" alt="Dawn Opinion 8" class="study-material-img">
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-gray-800 mb-1">Dawn Opinion 8</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/1wxIgDnti-UKny2bLrhRxVdDJ3yZjXNlq/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="650">
+                    <img src="https://placehold.co/400x300/25d366/000000?text=Dawn+Opinion+11" alt="Dawn Opinion 11" class="study-material-img">
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-gray-800 mb-1">Dawn Opinion 11</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/1lKGR83nrMYYciLIMZfYXObVcwT9iMHvK/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="700">
+                    <img src="https://placehold.co/400x300/ef4444/ffffff?text=Dawn+Opinion+5" alt="Dawn Opinion 5" class="study-material-img">
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-gray-800 mb-1">Dawn Opinion 5</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/1bu-hSFsGgOzy06tb3fXEoDYBNE57JhpN/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="750">
+                    <img src="https://placehold.co/400x300/f59e0b/000000?text=Dawn+Summary+6" alt="Dawn Summary 6" class="study-material-img">
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-gray-800 mb-1">Dawn Summary 6</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/1Z2HDM28W9CdoSv0PVBqcS4Yjzv2_jCJm/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="800">
+                    <img src="https://placehold.co/400x300/8b5cf6/ffffff?text=Dawn+Summary+12" alt="Dawn Summary 12" class="study-material-img">
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-gray-800 mb-1">Dawn Summary 12</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/12TuIcNxO01u5nplAfiye0iRGeE_NGXfK/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="850">
+                    <img src="https://placehold.co/400x300/dc2626/ffffff?text=Dawn+Vocab+11+Oct" alt="Dawn Vocab 11 October 2025" class="study-material-img">
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-gray-800 mb-1">Dawn Vocab 11 Oct 2025</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/1dUWPTOVB2amtm6xo7Jh_Z-66uRD_XvFs/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="900">
+                    <img src="https://placehold.co/400x300/059669/ffffff?text=Dawn+Vocab+12+Oct" alt="Dawn Vocab 12 October 2025" class="study-material-img">
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-gray-800 mb-1">Dawn Vocab 12 Oct 2025</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/11O_8GqZRFgLVoX8k4FEcGudZCrPfdlDT/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="950">
+                    <img src="https://placehold.co/400x300/7c3aed/ffffff?text=Dawn+Vocabulary+3" alt="Dawn Vocabulary 3" class="study-material-img">
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-gray-800 mb-1">Dawn Vocabulary 3</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/13mqxBtJMgaO2pKaqxgKdrjjTymta3IEY/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="1000">
+                    <img src="https://placehold.co/400x300/ea580c/ffffff?text=General+Knowledge" alt="General Knowledge" class="study-material-img">
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-gray-800 mb-1">General Knowledge</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/1mDItIPxEsnDPx-RnX4hYsplEgTd2vl_r/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="1050">
+                    <img src="https://placehold.co/400x300/0d9488/ffffff?text=Science+MCQs" alt="General Science MCQs for ETEA" class="study-material-img">
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-gray-800 mb-1">Science MCQs for ETEA</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/1IZjOCHEHeCLBhORq3yrC9qQGaABOHqYT/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="1100">
+                    <img src="https://placehold.co/400x300/007bff/ffffff?text=Islamiat+MCQs" alt="Islamiat MCQs" class="study-material-img">
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-gray-800 mb-1">Islamiat MCQs</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/1V1_oCJqsta9u3ohUU64HoS0IFPD2t8Bj/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="1150">
+                    <img src="https://placehold.co/400x300/25d366/000000?text=Pak+Study+MCQs" alt="Pak Study 1000 MCQs" class="study-material-img">
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-gray-800 mb-1">Pak Study 1000 MCQs</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/1S0nuW4dUGDkKlpZhgxwqHnPr-vo3-9sZ/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="item-card item-card-study bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl text-center" data-category="pdf" data-delay="1200">
+                    <img src="https://placehold.co/400x300/ef4444/ffffff?text=Synonyms+Antonyms" alt="Synonyms and Antonyms" class="study-material-img">
+                    <div class="p-4">
+                        <h3 class="text-md font-bold text-gray-800 mb-1">Synonyms & Antonyms</h3>
+                        <p class="text-sm font-semibold text-red-600 mb-3">PDF Document</p>
+                        <a href="https://drive.google.com/file/d/1S0nuW4dUGDkKlpZhgxwqHnPr-vo3-9sZ/view?usp=drive_link" target="_blank" class="btn-download text-white px-3 py-2 text-xs rounded font-semibold inline-block">
+                            <i class="fas fa-download mr-1"></i> Download PDF
                         </a>
                     </div>
                 </div>
@@ -487,11 +751,11 @@
                     </a>
 
                     <!-- Email Contact Card (New) -->
-                    <a href="mailto:info@spectrumenglish.pk" class="flex items-center p-4 bg-blue-50 rounded-lg border border-blue-200 hover:bg-blue-100 transition duration-200">
+                    <a href="mailto:soazali123@gmail.com" class="flex items-center p-4 bg-blue-50 rounded-lg border border-blue-200 hover:bg-blue-100 transition duration-200">
                         <i class="fas fa-envelope text-4xl text-blue-600 mr-4"></i>
                         <div class="flex-grow">
                             <p class="font-semibold text-gray-800">Email Support</p>
-                            <p class="text-lg font-bold text-blue-700">info@spectrumenglish.pk</p>
+                            <p class="text-lg font-bold text-blue-700">soazali123@gmail.com</p>
                         </div>
                         <i class="fas fa-arrow-right ml-auto text-blue-600"></i>
                     </a>
@@ -502,15 +766,15 @@
                     <h3 class="text-xl font-bold text-gray-800 mb-4">Follow Us on Social Media</h3>
                     <div class="flex justify-center space-x-6">
                         <!-- Facebook -->
-                        <a href="https://facebook.com/spectrumenglish" target="_blank" class="text-4xl text-gray-600 hover:text-blue-600 transition duration-200" aria-label="Follow us on Facebook">
+                        <a href="https://www.facebook.com/share/17hWMytBzP/" target="_blank" class="text-4xl text-gray-600 hover:text-blue-600 transition duration-200" aria-label="Follow us on Facebook">
                             <i class="fab fa-facebook-square"></i>
                         </a>
                         <!-- Instagram -->
-                        <a href="https://instagram.com/spectrumenglish" target="_blank" class="text-4xl text-gray-600 hover:text-pink-600 transition duration-200" aria-label="Follow us on Instagram">
+                        <a href="https://www.tiktok.com/@dawnvocabulary.com?_r=1&_t=ZS-91Y1C1Vw8Un" target="_blank" class="text-4xl text-gray-600 hover:text-pink-600 transition duration-200" aria-label="Follow us on Instagram">
                             <i class="fab fa-instagram-square"></i>
                         </a>
                         <!-- YouTube -->
-                        <a href="https://youtube.com/spectrumenglish" target="_blank" class="text-4xl text-gray-600 hover:text-red-600 transition duration-200" aria-label="Subscribe to our YouTube Channel">
+                        <a href="https://youtube.com/@spectrumenglish1901?si=ZxiVjS1cVRxbf_hm" target="_blank" class="text-4xl text-gray-600 hover:text-red-600 transition duration-200" aria-label="Subscribe to our YouTube Channel">
                             <i class="fab fa-youtube-square"></i>
                         </a>
                     </div>
@@ -624,7 +888,7 @@
                 mobileMenu.classList.add('-translate-x-full');
             });
             
-            // --- 3. Filtering Logic for Courses & Ebooks ---
+            // --- 3. Filtering Logic for Courses & Study Materials ---
             const setupFilter = (filterListId, contentGridId, itemClass) => {
                 document.getElementById(filterListId).addEventListener('click', (e) => {
                     const filterButton = e.target.closest('.category-filter');
@@ -642,7 +906,7 @@
                         card.style.display = 'none'; // Hide by default
                         card.classList.remove('visible'); // Remove visible class for re-animation
 
-                        if (filter === 'all-courses' || filter === 'all-ebooks' || categories.includes(filter)) {
+                        if (filter === 'all-courses' || filter === 'all-study' || categories.includes(filter)) {
                             card.style.display = 'block'; // Show if it matches filter or 'all'
                             // Ab 'observer' define ho chuka hai aur use kiya ja sakta hai.
                             observer.observe(card); // Re-observe for fade-in
@@ -652,9 +916,6 @@
             };
 
             setupFilter('course-categories-list', 'course-grid', 'item-card');
-            setupFilter('ebook-categories-list', 'ebook-grid', 'item-card-ebook');
-
-
             
             // Initial items ko observe karein jab DOM load ho jaaye
             document.querySelectorAll('.item-card').forEach(card => observer.observe(card));
@@ -667,6 +928,37 @@
             }
 
         });
+
+        // Image Download Function
+        function downloadImage(filename) {
+            // Create a temporary link element
+            const link = document.createElement('a');
+            link.href = `images/${filename}`; // Adjust path as needed
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Show success message
+            alert(`Downloading ${filename}`);
+        }
+
+        // Image Share Function
+        function shareImage(filename) {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Spectrum English Study Material',
+                    text: 'Check out this study material from Spectrum English',
+                    url: window.location.href,
+                })
+                .then(() => console.log('Successful share'))
+                .catch((error) => console.log('Error sharing:', error));
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                const shareUrl = `https://wa.me/?text=Check out this study material from Spectrum English: ${window.location.href}`;
+                window.open(shareUrl, '_blank');
+            }
+        }
     </script>
 </body>
 </html>
